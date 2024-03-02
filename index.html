@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+
+    <style>
+        .siparis-table,
+        .siparis-table th,
+        .siparis-table td {
+            border: 1px solid black;
+            background-color: lightyellow;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Kisiye Ozel T-shirt Siparis Araci</h1>
+    <hr>
+    <p>Lutfen olusturmak istediginiz siparise iliskin asagidaki bilgileri doldurunuz;</p>
+
+    <!-- Kisisel Bilgiler    -->
+    <h2>Kisisel Bilgiler</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="ad">Adiniz:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="ad">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="soyad">Soyadiniz:
+                    </label>
+                </td>
+                <td>
+                    <input type="text" id="soyad">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="dTarihi">Dogum Tarihiniz:</label>
+                </td>
+                <td>
+                    <input type="date" id="dTarihi">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="tel">Telefon Numaraniz:
+                    </label>
+                </td>
+                <td>
+                    <input type="tel" id="tel" placeholder="5XX-XXX-XXXX" pattern="[0-9]{5}-[0-9]{3}-[0-9]{4}">
+                </td>
+            </tr>
+    </table>
+    <hr>
+
+    <!-- Siparis Bilgileri -->
+    <h2>Siparis Bilgileri</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="tshirt-renk">T-shirt rengi:
+                    </label>
+                </td>
+                <td>
+                    <input type="color" id="tshirt-renk">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="yazi-renk">Yazi rengi:
+                    </label>
+                </td>
+                <td>
+                    <input type="color" id="yazi-renk">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="yazi">T-shirt uzerinde yazilacak yaziyi girin:</label>
+                </td>
+                <td>
+                    <input type="text" id="yazi">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="adet">T-shirt Adeti:
+                    </label>
+                </td>
+                <td>
+                    <input type="number" id="adet">
+                </td>
+            </tr>
+            <tr aria-colspan="2"">
+                <td>
+                    <!-- beden icin slider -->
+                    <label for=" beden">Beden Seciniz:</label>
+                </td>
+                <td>
+                    <input type="range" id="beden" min="1" max="5" value="1" step="1" list="bedenler">
+                    <datalist id="bedenler">
+                        <option value="1">XS</option>
+                        <option value="2">S</option>
+                        <option value="3">M</option>
+                        <option value="4">L</option>
+                        <option value="5">XL</option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="beden-sec">Sec</button>
+                    <input type="text" id="seciliBeden" disabled>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <!-- Teslimat Bilgileri -->
+    <h2>Teslimat Bilgileri</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="adres">Adres:
+                    </label>
+                </td>
+                <td>
+                    <input type="address" id="adres">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="hafta">Teslim tarihi icin bir aralik secin:
+                    </label>
+                </td>
+                <td>
+                    <!-- aralikli tarih -->
+                    <input type="week" id="hafta">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <hr>
+
+    <!-- Odeme Bilgileri -->
+    <h2>Odeme Bilgileri</h2>
+    <table>
+        <tr>
+            <td>
+                <label for="ad-soyad">Ad Soyad:
+                </label>
+            </td>
+            <td>
+                <input type="text" id="ad-soyad">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="kart-no">Kart Numarasi: </label>
+            </td>
+            <td>
+                <!-- kart numarasi input -->
+                <input type="tel" id="kart-no" maxlength="16" placeholder="XXXX-XXXX-XXXX-XXXX"
+                    pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="son-kullanma">Son Kullanma Tarihi:
+                </label>
+
+            </td>
+            <td>
+                <!-- son kullanma tarihi input -->
+                <input type="month" id="son-kullanma">
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <label for="cvv">CVV:
+                </label>
+            </td>
+            <td>
+                <!-- cvv input -->
+                <input type="text" id="cvv" maxlength="3" placeholder="XXX">
+        </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <button onclick="siparisOlustur()">Onayla</button>
+
+
+
+    <div id="siparis-ozet">
+        <table class="siparis-table">
+            <thead>
+                <tr>
+                    <th colspan="3">Siparis Onay</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="5">Kisisel Bilgiler</td>
+                    <td>Ad</td>
+                    <td>
+                        <input disabled type="text" id="ad-ozet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Soyad</td>
+                    <td>
+                        <input disabled type="text" id="soyad-ozet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dogum Tarihi</td>
+                    <td>
+                        <input disabled type="text" id="dTarihi-ozet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mail Adresi</td>
+                    <td>
+                        <input disabled type="text" id="mail-ozet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Telefon</td>
+                    <td>
+                        <input disabled type="text" id="tel-ozet">
+                    </td>
+                </tr>
+
+                <!-- siparis bilgileri -->
+                <tr>
+                    <td rowspan="4">
+                        Siparis Bilgileri
+                    </td>
+                    <td>T-shirt rengi</td>
+                    <td>
+                        <input disabled type="text" id="renk-ozet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Yazi Rengi</td>
+                    <td>
+                        <input disabled type="text" id="yazi-renk-ozet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>t-shirt adeti</td>
+                    <td>
+                        <input disabled type="text" id="adet-ozet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>t-shirt bedeni</td>
+                    <td>
+                        <input disabled type="text" id="mail-ozet">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2">
+                        Teslimat bilgileri
+                    </td>
+
+                    <td>
+                        <label for="hafta">Teslim tarihi icin bir aralik secin:
+                        </label>
+                    </td>
+                    <td>
+                        <!-- aralikli tarih -->
+                        <input type="week" id="hafta-ozet" disabled>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <label for="adres">Adres:
+                        </label>
+                    </td>
+                    <td>
+                        <input type="address" id="adres-ozet" disabled>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="4">Odeme Bilgileri</td>
+                    <td>
+                        <label for="ad-soyad">Ad Soyad:
+                        </label>
+                    </td>
+                    <td>
+                        <input disabled type="text" id="ad-soyad-ozet">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="kart-no-ozet">Kart Numarasi: </label>
+                    </td>
+                    <td>
+                        <!-- kart numarasi input disabled -->
+                        <input disabled type="tel" id="kart-no-ozet" maxlength="16" placeholder="XXXX-XXXX-XXXX-XXXX"
+                            pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="son-kullanma">Son Kullanma Tarihi:
+                        </label>
+
+                    </td>
+                    <td>
+                        <!-- son kullanma tarihi input disabled -->
+                        <input disabled type="month" id="son-kullanma-ozet">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cvv">CVV:
+                        </label>
+                    </td>
+                    <td>
+                        <!-- cvv input -->
+                        <input type="text" id="cvv-ozet" maxlength="3" placeholder="XXX" disabled>
+                </tr>
+            </tbody>
+        </table>
+
+        <button>Tamamla</button>
+
+    </div>
+</body>
+
+</html>
